@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  
+  section#form.grey
+    .container
+      .row
+        .twelve.columns
+          .card.form
+            if error
+              p.center.error= error
+            form(action='/news', method='post')
+              label(for='stockName') Stock:
+              select#stockName(name='stockName')
+                option(selected, disabled) Select stock
+                each stock in stocks
+                  option= stock.name
+              label(for='typeOfNews') Type:
+              select#typeOfNews(name='typeOfNews')
+                option(selected) Good
+                option Bad
+              input(type='submit', value='Post news')

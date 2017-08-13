@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  .row
+    .nine.columns#main
+      .nav-main
+        .row
+          .two.columns
+            p#currentMoney
+              | Total: 
+              span.numeral $
+                span.number #{currentUser.totalCurrent}
+          .eight.columns
+            input(type='text', placeholder='Search for stocks…')
+          .two.columns
+            if currentUser
+              p.username#currentMoney= currentUser.username
+      .stocks-main
+        table#stocksTable
+          tr
+            th(width='5%') #
+            th(width='25%') Company
+            th(width='15%') Current
+            th(width='15%') Change
+            th(width='10%') Owned
+            th(width='15%') Buy
+            th(width='15%') Sell  
+            
+          each stock, index in stocks
+            tr
+              td= index + 1
+              td.stockName= stock.name
+              td.stockPrice= stock.currentPrice
+              td.stockChange
+                span.delta= stock.change
+                | %
+              td.numberOfStocks 0
+              td
+                button.buy Buy
+              td
+                button.sell Sell
+          
+    .three.columns#news
+      h1.heading News
+      .news-container
+        .news-item
+          .news-header
+            h3
+              span.company-name Uber
+              span.news-time 1m ago
+          .news-body
+            p.news-content Uber CEO was caught having sex with a minor
+            

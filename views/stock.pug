@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  
+  section#form.grey
+    .container
+      .row
+        .twelve.columns
+          .card.form
+            if error
+              p.center.error= error
+            form(action='/stock', method='post')
+              label(for='stockName') Stock Name:
+              input#stockName(type='text', name='stockName', placeholder='Stock Name', required)
+              label(for='stockSymbol') Stock Symbol:
+              input#stockSymbol(type='text', name='stockSymbol', placeholder='Stock Symbol', required)
+              label(for='stockPrice') Opening Price:
+              input#stockPrice(type='number', name='stockPrice', placeholder='Opening Price', required)
+              input(type='submit', value='Register')

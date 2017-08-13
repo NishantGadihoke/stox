@@ -1,0 +1,87 @@
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.grey-text {
+  color: $dark-grey;
+}
+
+.small-text {
+  font-size: 1em;
+  letter-spacing: 0.5px;
+}
+
+.serif {
+  font-family: 'adobe-garamond-pro','Garamond','Georgia',serif;
+}
+
+.mono {
+  font-family: 'inconsolata' ,'droid-sans-mono', monospace;
+  font-weight: 600;
+}
+
+.no-m {
+  margin: 0;
+}
+
+.no-m-b {
+  margin-bottom: 0;
+}
+
+.no-m-r {
+  margin-right: 0;
+}
+
+.no-m-l {
+  margin-left: 0;
+}
+
+.no-m-t {
+  margin-top: 0;
+}
+
+.no-p {
+  padding: 0;
+}
+
+.card {
+  background: #FFF;
+  max-width: 100%;
+  box-shadow: 1px 2px 1px 0 rgba(0,0,0,0.02);
+  padding: 2.5%;
+}
+
+.minet {
+  font-family: "MINET font",sans-serif;
+  line-height: 75px;
+  border: none;
+  color: $blue;
+  font-size: 1.8em;
+  text-decoration: none;
+  transform: translateY(3px);
+  margin-left: -20px;
+}
+
+.table {
+  display: table;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+code {
+  background: $grey;
+  font-size: 2em;
+  border-radius: 3px;
+  letter-spacing: 10px;
+  text-align: center;
+  padding: 12.5px 12.5px 12.5px 20px;
+  margin: 0 auto;
+  border: 1px solid #eee;
+  display: inline-block;
+}

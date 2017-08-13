@@ -1,0 +1,153 @@
+@font-face {
+    font-family: "MINET font";
+    src: url("../fonts/minet.eot");
+    src: url("../fonts/minet.eot?#iefix") format("embedded-opentype"),url("../fonts/minet.woff2") format("woff2"),url("../fonts/minet.woff") format("woff"),url("../fonts/minet.ttf") format("truetype"),url("../fonts/minet.svg#virgo_01regular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+//Import modules
+
+@import "modules/framework";
+@import "modules/colors";
+@import "modules/base";
+@import "modules/utility";
+
+.card {
+  width: 500px;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+#main, #news {
+  min-height: 100vh;
+  padding: 1.5%;
+}
+
+#news {
+  background: $grey;
+  position: fixed;
+  right: 0;
+  margin-left: 0;
+  h1.heading {
+    margin: 0 0 20px 0;
+    text-align: center;
+  }
+  .news-item {
+    background: lighten($grey, 2.5%);
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.05);
+    border-radius: 6px;
+    font-size: 0.95em;
+    .news-header {
+      padding: 2% 3%;
+      border-radius: 6px 6px 0 0;
+      background: darken($grey, 7.5%);
+      h3 {
+        margin: 0;
+        color: #333;
+        font-size: 0.95em;
+        span {
+          display: inline;
+          &.news-time {
+            float: right;
+          }
+        }
+      }
+    }
+    .news-content {
+      padding: 2% 3%;
+      margin-top: 0;
+    }
+  }
+}
+
+#main {
+  width: 78%;
+  .nav-main {
+    .columns {
+      margin: 0;
+    }
+    input {
+      padding: 2%;
+      width: 600px;
+      margin: 0 auto;
+      display: block;
+      border: none;
+      background: darken($grey, 5%);
+      font-size: 1.2em;
+      border-radius: 6px;
+      outline: none;
+      &:focus {
+        box-shadow: 0 0 25px 0 rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+      }
+    }
+    .two {
+      width: 25%;
+      text-align: center;
+      p#currentMoney{
+        font-size: 1.5em;
+        margin: 0;
+        padding: 3% 0;
+        .numeral {
+          color: $dark-blue;
+          font-weight: 800;
+        }
+      }
+    }
+    .eight {
+      width: 50%;
+    }
+  }
+  .stocks-main {
+    table {
+      width: 100%;
+      text-align: center;
+      margin-top: 50px;
+      font-size: 1.2em;
+      th {
+        background: $dark-blue;
+        color: #fff;
+      }
+      th, td {
+        padding: 1.5%;
+      }
+      td {
+        button {
+          border: none;
+          box-shadow: none;
+          outline: none;
+          background: #000;
+          color: #fff;
+          width: 100px;
+          padding: 5px 0;
+          border-radius: 6px;
+          cursor: pointer;
+          text-align: center;
+          font-weight: 600;
+          &.buy {
+            background: darken(#4cd964, 5%);
+            &:focus {
+              background: darken(#4cd964, 10%);
+            }
+          }
+          &.sell {
+            background: darken(#ff3b30, 5%);
+            &:focus {
+              background: darken(#ff3b30, 10%);
+            }
+          }
+        }
+        &.negative {
+          color: darken(#ff3b30, 20%);
+        }
+        &.positive {
+          color: darken(#4cd964, 20%);
+        }
+      }
+      tr:nth-child(odd) {
+        background: $grey;
+      }
+    }
+  }
+}
