@@ -43,11 +43,19 @@ block content
     .three.columns#news
       h1.heading News
       .news-container
-        .news-item
-          .news-header
-            h3
-              span.company-name Uber
-              span.news-time 1m ago
+        each newsitem in news
+          .news-item
+            .news-header
+              h3
+                span.company-name #{newsitem.name}
+                span.news-time 1m ago
+            .news-body
+              p.news-content #{newsitem.action}
+        //- .news-item
+        //-   .news-header
+        //-     h3
+        //-       span.company-name Uber
+        //-       span.news-time 1m ago
           .news-body
             p.news-content Uber CEO was caught having sex with a minor
             

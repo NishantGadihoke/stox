@@ -4,6 +4,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require("../models/user");
 var Stocks = require("../models/stocks");
+var News = require("../models/news");
 
 //Render home page
 router.get('/', (req, res, next) => {
@@ -11,7 +12,9 @@ router.get('/', (req, res, next) => {
     return res.redirect('/login');
   } else {
     Stocks.find().sort('-name').exec(function(err, stocks) {
-      return res.render('index', {stocks: stocks});
+      News.find().sort('-time').exec(function(err, news) {
+        return res.render('index', {stocks: stocks, news: news});
+      });
     });
   }
 });
@@ -89,6 +92,26 @@ router.post('/stock', function(req, res) {
 router.get('/news', (req, res, next) => {
   Stocks.find().sort('-name').exec(function(err, stocks) {
     return res.render('news', { stocks: stocks });
+  });
+});
+
+//REGISTER user
+router.post('/news', function(req, res) {
+  var newsData = {
+    name: req.body.stockName,
+    action: req.body.typeOfNews,
+    time: new Date()
+  }
+  News.create(newsData, (error, news) => {
+    if (error) {
+      Stocks.find().sort('-name').exec(function(err, stocks) {
+        return res.render('news', { error : error, stocks: stocks });
+      });
+    } else {
+      Stocks.find().sort('-name').exec(function(err, stocks) {
+        return res.render('news', { error : 'News created successfully.', stocks: stocks });
+      });
+    }
   });
 });
 

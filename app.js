@@ -152,23 +152,25 @@ io.on('connection', (socket) => {
 
   if (socket.request.session.passport !== undefined) {
     User.findOne({username: socket.request.session.passport.user}, function (err, user) {
-      Stocks.find({}, function(err, stocks) {
-        socket.emit('update', {
-          money: user.totalCurrent,
-          stocksBought: user.stocksBought,
+      if(!err) {
+        Stocks.find({}, function(err, stocks) {
+          socket.emit('update', {
+            money: user.totalCurrent,
+            stocksBought: user.stocksBought,
+          });
+          io.sockets.emit('updateAll', {
+            stocks: stocks
+          });
         });
-        io.sockets.emit('updateAll', {
-          stocks: stocks
-        });
-      });
+      }
     });
   }
 
   socket.on('buy', function(data) { //When user buys a stock
-
+    console.log(socket.request.session.passport);
     if (socket.request.session.passport !== undefined) {
-
       User.findOne({username: socket.request.session.passport.user}, function (err, user) {
+        console.log(user);
         if (!user) {
           return res.redirect('/dashboard');
         } else { //If user exists
@@ -259,6 +261,11 @@ io.on('connection', (socket) => {
         }
       });
     }
+
+  });
+
+  socket.on('news', function(data) {
+
   });
 
   socket.on('disconnect', () => {
@@ -270,6 +277,7 @@ io.on('connection', (socket) => {
 //Setting routes
 var routes = require('./routes/index');
 app.use('/', routes);
+
 
 //404
 app.use((res, req, next) => {

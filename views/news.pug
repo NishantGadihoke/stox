@@ -17,6 +17,7 @@ block content
                   option= stock.name
               label(for='typeOfNews') Type:
               select#typeOfNews(name='typeOfNews')
-                option(selected) Good
-                option Bad
+                option(selected, disabled) Select type
+                option good
+                option bad
               input(type='submit', value='Post news')
