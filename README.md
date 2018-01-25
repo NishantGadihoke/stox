@@ -1,2 +1,2 @@
 # stox
-Here's to the gayzy ones
+stox is a stock-trading web app made for MINET X 2017.
